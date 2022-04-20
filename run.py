@@ -9,7 +9,7 @@ subscriptions = db_client['olx-monitor']['subscription']
 bot = Bot(os.environ['TG_TOKEN'])
 
 
-def __main__():
+def update_news():
     with Session() as client:
         for subscription in subscriptions.find({}):
             process_subscription(client, subscription)
@@ -36,7 +36,7 @@ def notify(chat_id: int, record: dict):
 
 
 if __name__ == '__main__':
-    __main__()
+    update_news()
 
 
 
