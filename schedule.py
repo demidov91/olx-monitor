@@ -15,3 +15,4 @@ if __name__ == '__main__':
             time.sleep(540)
         except:
             logger.exception('Unexpected exception')
+            time.sleep(10)
