@@ -1,3 +1,4 @@
+import time
 from requests import Session
 import pymongo
 import os
@@ -24,6 +25,7 @@ class Updater:
 
             self.notify(subsription['chat_id'], record)
             self.subscriptions.update_one({'_id': subsription['_id']}, {'$push': {'seen': record['id']}})
+            time.sleep(10) # quick fix to proceed with telegram supergroup limitations.
 
     def notify(self, chat_id: int, record: dict):
         is_promo = record.get('promotion', {}).get('top_ad')
