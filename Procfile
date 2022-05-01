@@ -1,1 +1,1 @@
-scheduled: python schedule.py
+scheduled: python olx_monitor/schedule.py
