@@ -4,7 +4,7 @@ from telegram import Bot
 
 def set_webhook():
     bot = Bot(os.environ['TG_TOKEN'])
-    # bot.set_webhook('https://2644-37-30-104-111.ngrok.io')
+    # bot.set_webhook('')
 
 
 if __name__ == '__main__':
