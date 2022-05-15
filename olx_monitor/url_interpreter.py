@@ -6,7 +6,7 @@ from urllib import parse
 from olx_monitor.exceptions import UnexpectedUrlFormat
 from olx_monitor.constants import DATA_DIR
 
-like_an_url_pattern = re.compile(r'https://(m\.)?olx.pl/.+?')
+like_an_url_pattern = re.compile(r'https://(www\.)?(m\.)?olx.pl/.+?')
 browser_url_path_pattern = re.compile(
     r'(/d)?/nieruchomosci/mieszkania/(wynajem/)?(?P<normalized_city>[\w_-]*)/?'
 )

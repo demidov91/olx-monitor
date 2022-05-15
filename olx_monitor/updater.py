@@ -54,7 +54,7 @@ class Updater:
 
             )
 
-    @async_retry(retry_count=4)
+    @async_retry(retry_count=4, log_args=[1])
     async def notify(self, chat_id: int, record: dict):
         is_promo = record.get('promotion', {}).get('top_ad')
         title = record['title']
@@ -89,6 +89,7 @@ async def tg_retry_aware(func):
     try:
         func()
     except RetryAfter as e:
+        logger.info('Slow down %ss.', e.retry_after)
         await asyncio.sleep(e.retry_after)
         func()
 

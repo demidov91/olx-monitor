@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 def build_url(base_url):
-    return urljoin(base_url, urljoin('olx_monitor', os.environ['SECURE_URL']))
+    return urljoin(base_url, urljoin('olx_monitor/', os.environ['SECURE_URL']))
 
 
 def build_tg_message(text:str, chat_id: int):
