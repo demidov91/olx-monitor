@@ -1,1 +1,1 @@
-scheduled: python olx_monitor/schedule.py
+web: gunicorn -w 3 -b 0.0.0.0:${PORT} olx_monitor.server:init --worker-class aiohttp.GunicornUVLoopWebWorker

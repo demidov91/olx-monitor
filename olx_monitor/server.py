@@ -61,7 +61,7 @@ async def root_handler(request):
         return build_tg_message(await tg_help(chat_id), chat_id=chat_id)
 
 
-async def init(argv):
+async def init(argv=None):
     logging.basicConfig(level=logging.INFO)
     logging.getLogger('').addHandler(TgHandler())
 
