@@ -5,6 +5,7 @@ import json
 import urllib.request
 from itertools import chain
 from olx_monitor.constants import CITIES_URL, DATA_DIR
+from olx_monitor.server import build_url
 
 import logging
 logger = logging.getLogger(__name__)
@@ -12,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def set_webhook(url: str):
     bot = Bot(os.environ['TG_TOKEN'])
-    bot.set_webhook(url)
+    print(bot.set_webhook(build_url(url)))
 
 
 def build_region(region: dict):

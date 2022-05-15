@@ -10,14 +10,14 @@ from telegram.error import RetryAfter
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
+from olx_monitor.db import subscriptions
 
 logger = logging.getLogger(__name__)
 
 
 class Updater:
     def __init__(self):
-        _db_client = motor.MotorClient(os.environ['DB_CONNSTRING'])
-        self.subscriptions = _db_client['olx-monitor']['subscription']
+        self.subscriptions = subscriptions()
         self.bot = Bot(os.environ['TG_TOKEN'])
 
     async def update_news(self):

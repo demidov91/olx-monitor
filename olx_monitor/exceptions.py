@@ -19,21 +19,8 @@ class UnexpectedUrlFormat(ValueError):
             return f'Unexpected path: {self.path}\nOriginal url: {self.url}'
 
         if self.qs_param is not None:
-            return f'Unexpected qs parameter: {self.qs_param}\nOriginal url: {self.url}'
+            return f'Unexpected querystring parameter: {self.qs_param}\nOriginal url: {self.url}'
 
         return f'Unexpected url: {self.url}'
 
-
-class UnexpectedPath(ValueError):
-    pass
-
-
-class UnknownCity(ValueError):
-    @property
-    def city(self):
-        return self.args[0]
-
-
-class UnexpectedParam(ValueError):
-    pass
 

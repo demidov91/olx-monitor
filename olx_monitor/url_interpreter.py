@@ -6,8 +6,9 @@ from urllib import parse
 from olx_monitor.exceptions import UnexpectedUrlFormat
 from olx_monitor.constants import DATA_DIR
 
+like_an_url_pattern = re.compile(r'https://(m\.)?olx.pl/.+?')
 browser_url_path_pattern = re.compile(
-    r'/d/nieruchomosci/mieszkania/(wynajem/)?(?P<normalized_city>[\w_-]+)/?'
+    r'(/d)?/nieruchomosci/mieszkania/(wynajem/)?(?P<normalized_city>[\w_-]*)/?'
 )
 qs_param_pattern = re.compile(r'search\[(?P<name>.*?)\]')
 
@@ -34,6 +35,9 @@ def path_to_params(path: str):
 
 
 def city_to_params(city_name: str):
+    if not city_name:
+        return {}
+
     with open(os.path.join(DATA_DIR, 'cities.json'), 'rb') as f:
         cities = json.load(f)
 
