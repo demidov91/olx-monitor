@@ -9,7 +9,7 @@ from telegram.error import RetryAfter
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
-from olx_monitor.db import subscription_collection
+from olx_monitor.db import subscription_collection, update_active_connection
 
 logger = logging.getLogger(__name__)
 
@@ -20,7 +20,7 @@ class Updater:
         self.bot = Bot(os.environ['TG_TOKEN'])
 
     async def update_news(self):
-        subs = [x async for x in self.subscriptions.find({})]
+        subs = [x async for x in self.subscriptions.find({'active': True})]
 
         async with ClientSession(connector=TCPConnector(limit=1)) as client:
             results = await asyncio.gather(
@@ -54,7 +54,7 @@ class Updater:
 
             )
 
-    @async_retry(retry_count=2)
+    @async_retry(retry_count=4)
     async def notify(self, chat_id: int, record: dict):
         is_promo = record.get('promotion', {}).get('top_ad')
         title = record['title']
@@ -96,7 +96,12 @@ async def tg_retry_aware(func):
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     logging.getLogger('').addHandler(TgHandler())
+
+    async def _run():
+        update_active_connection()
+        await Updater().update_news()
+
     try:
-        asyncio.run(Updater().update_news())
+        asyncio.run(_run())
     except Exception as e:
         logger.exception('Unexpected error: %s', e)

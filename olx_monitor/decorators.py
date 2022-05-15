@@ -32,7 +32,8 @@ def async_retry(coro=None, retry_count=None, initial_wait_time=10):
 
                 logger.warning(
                     'Error (%s) while running %s. Restarting in %s seconds...',
-                    e, coro.__name__, wait_for_before_restart
+                    e, coro.__name__, wait_for_before_restart,
+                    exc_info=True
                 )
 
                 await asyncio.sleep(wait_for_before_restart)

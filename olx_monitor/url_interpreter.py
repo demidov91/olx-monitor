@@ -68,7 +68,7 @@ def query_to_params(query_string: str):
 
 def build_api_url(params: dict):
     params['offset'] = 0
-    params['limit'] = 40
+    params['limit'] = 10
     params['category_id'] = 15
     params['facets'] = '[{"field"%3A"district"%2C"fetchLabel"%3Atrue%2C"fetchUrl"%3Atrue%2C"limit"%3A10}]'
     return 'https://www.olx.pl/api/v1/offers/?' + parse.urlencode(params, safe='[]{}"%')
