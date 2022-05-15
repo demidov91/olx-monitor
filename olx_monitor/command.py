@@ -4,13 +4,10 @@ import sys
 import json
 import urllib.request
 from itertools import chain
-from olx_monitor.constants import CITIES_URL
+from olx_monitor.constants import CITIES_URL, DATA_DIR
 
 import logging
 logger = logging.getLogger(__name__)
-
-CURRENT_DIR = os.path.dirname(__file__)
-DATA_DIR = os.path.join(CURRENT_DIR, 'data')
 
 
 def set_webhook(url: str):
