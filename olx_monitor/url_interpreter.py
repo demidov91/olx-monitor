@@ -41,13 +41,19 @@ def city_to_params(city_name: str):
     with open(os.path.join(DATA_DIR, 'cities.json'), 'rb') as f:
         cities = json.load(f)
 
-    try:
+    if city_name not in cities:
+        raise UnexpectedUrlFormat(city_name=city_name)
+
+    if 'id' in cities[city_name]:
         return {
             'region_id': cities[city_name]['region-id'],
             'city_id': cities[city_name]['id'],
         }
-    except KeyError as e:
-        raise UnexpectedUrlFormat(city_name=e.args[0])
+
+    return {
+        'region_id': cities[city_name]['region-id'],
+    }
+
 
 
 def query_to_params(query_string: str):

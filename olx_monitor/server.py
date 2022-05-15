@@ -7,10 +7,9 @@ import logging
 from telegram import Update
 
 from olx_monitor.db import update_active_connection
-from olx_monitor.handlers import handle_browser_url, stop_updates
+from olx_monitor.handlers import handle_browser_url, stop_updates, tg_help
 from olx_monitor.tg_handler import TgHandler
 from olx_monitor.url_interpreter import like_an_url_pattern
-from olx_monitor.constants import HELP_MESSAGE
 
 logger = logging.getLogger(__name__)
 
@@ -55,11 +54,11 @@ async def root_handler(request):
             chat_id=chat_id,
         )
 
-    if tg_update.message.text == '/stop':
+    if tg_update.message.text.startswith('/stop'):
         return build_tg_message(await stop_updates(chat_id), chat_id=chat_id)
 
-    if tg_update.message.text == '/help':
-        return build_tg_message(HELP_MESSAGE, chat_id=chat_id)
+    if tg_update.message.text.startswith('/help'):
+        return build_tg_message(await tg_help(chat_id), chat_id=chat_id)
 
 
 async def init(argv):

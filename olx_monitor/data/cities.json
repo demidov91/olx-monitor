@@ -5758,5 +5758,53 @@
     "has_districts": false,
     "region-id": 11,
     "region-normalized_name": "zachodniopomorskie"
+  },
+  "dolnoslaskie": {
+    "region-id": 3
+  },
+  "kujawsko-pomorskie": {
+    "region-id": 15
+  },
+  "lubelskie": {
+    "region-id": 8
+  },
+  "lubuskie": {
+    "region-id": 9
+  },
+  "lodzkie": {
+    "region-id": 7
+  },
+  "malopolskie": {
+    "region-id": 4
+  },
+  "mazowieckie": {
+    "region-id": 2
+  },
+  "opolskie": {
+    "region-id": 12
+  },
+  "podkarpackie": {
+    "region-id": 17
+  },
+  "podlaskie": {
+    "region-id": 18
+  },
+  "pomorskie": {
+    "region-id": 5
+  },
+  "slaskie": {
+    "region-id": 6
+  },
+  "swietokrzyskie": {
+    "region-id": 13
+  },
+  "warminsko-mazurskie": {
+    "region-id": 14
+  },
+  "wielkopolskie": {
+    "region-id": 1
+  },
+  "zachodniopomorskie": {
+    "region-id": 11
   }
 }

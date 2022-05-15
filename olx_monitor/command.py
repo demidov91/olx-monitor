@@ -37,7 +37,10 @@ def build_cities():
     with open(os.path.join(DATA_DIR, 'regions.json'), 'rt') as f:
         regions = json.load(f)
 
-    all_cities = chain(*[build_region(x) for x in regions])
+    all_cities = chain(
+        *[build_region(x) for x in regions],
+        [{'normalized_name': x['normalized_name'], 'region-id': x['id']} for x in regions],
+    )
 
     with open(os.path.join(DATA_DIR, 'cities.json'), 'wt') as f:
         json.dump({x.pop('normalized_name'): x for x in all_cities}, f, indent=2)
