@@ -7,9 +7,10 @@ import logging
 from telegram import Update
 
 from olx_monitor.db import update_active_connection
+from olx_monitor.handlers import handle_browser_url, stop_updates
 from olx_monitor.tg_handler import TgHandler
-from olx_monitor.url_interpreter import like_an_url_pattern, browser_url_to_api
-from olx_monitor.exceptions import UnexpectedUrlFormat
+from olx_monitor.url_interpreter import like_an_url_pattern
+from olx_monitor.constants import HELP_MESSAGE
 
 logger = logging.getLogger(__name__)
 
@@ -43,19 +44,22 @@ async def root_handler(request):
     if not tg_update.effective_user:
         return {}
 
-    if tg_update.message.text and like_an_url_pattern.match(tg_update.message.text):
+    if not tg_update.message.text:
+        return
+
+    chat_id = tg_update.effective_chat.id
+
+    if like_an_url_pattern.match(tg_update.message.text):
         return build_tg_message(
-            await tg_handle_browser_url(tg_update.message.text),
-            chat_id=tg_update.effective_chat.id,
+            await handle_browser_url(tg_update.message.text, chat_id),
+            chat_id=chat_id,
         )
 
+    if tg_update.message.text == '/stop':
+        return build_tg_message(await stop_updates(chat_id), chat_id=chat_id)
 
-async def tg_handle_browser_url(text: str):
-    try:
-        return browser_url_to_api(text)
-    except UnexpectedUrlFormat as e:
-        logger.error(str(e))
-        return str(e)
+    if tg_update.message.text == '/help':
+        return build_tg_message(HELP_MESSAGE, chat_id=chat_id)
 
 
 async def init(argv):

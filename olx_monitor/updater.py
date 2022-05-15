@@ -3,21 +3,20 @@ import logging
 from functools import partial
 
 from aiohttp import ClientSession, TCPConnector
-import motor
 import os
 from telegram import Bot, InputMediaPhoto
 from telegram.error import RetryAfter
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
-from olx_monitor.db import subscriptions
+from olx_monitor.db import subscription_collection
 
 logger = logging.getLogger(__name__)
 
 
 class Updater:
     def __init__(self):
-        self.subscriptions = subscriptions()
+        self.subscriptions = subscription_collection()
         self.bot = Bot(os.environ['TG_TOKEN'])
 
     async def update_news(self):

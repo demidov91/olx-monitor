@@ -10,7 +10,7 @@ like_an_url_pattern = re.compile(r'https://(m\.)?olx.pl/.+?')
 browser_url_path_pattern = re.compile(
     r'(/d)?/nieruchomosci/mieszkania/(wynajem/)?(?P<normalized_city>[\w_-]*)/?'
 )
-qs_param_pattern = re.compile(r'search\[(?P<name>.*?)\]')
+qs_param_pattern = re.compile(r'search\[(?P<name>.*?)\](?P<index>\[\d+\])?')
 
 
 def browser_url_to_api(browser_url: str):
@@ -58,7 +58,7 @@ def query_to_params(query_string: str):
         if match is None:
             raise UnexpectedUrlFormat(qs_param=key)
 
-        parsed_qs[match.group('name')] = value
+        parsed_qs[match.group('name') + (match.group('index') or '')] = value
 
     if 'private_business' in parsed_qs:
         parsed_qs['owner_type'] = parsed_qs.pop('private_business')

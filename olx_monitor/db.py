@@ -17,6 +17,6 @@ def update_active_connection():
     _connection.set(get_connection())
 
 
-def subscription() -> 'motor.core.AgnosticDatabase':
+def subscription_collection() -> 'motor.core.AgnosticDatabase':
     return _connection.get()['olx-monitor']['subscription']
 

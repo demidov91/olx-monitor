@@ -33,8 +33,9 @@ def test_browser_url_to_api(browser, api):
         'search[filter_enum_furniture][0]=yes&search[filter_float_m:from]=34&search[filter_float_m:to]=50&'
         'search[filter_enum_rooms][0]=one&search[filter_enum_rooms][1]=two',
         {
-            'filter_enum_furniture': 'yes',
-            'filter_enum_rooms': 'two',
+            'filter_enum_furniture[0]': 'yes',
+            'filter_enum_rooms[0]': 'one',
+            'filter_enum_rooms[1]': 'two',
             'filter_float_m:from': '34',
             'filter_float_m:to': '50',
             'filter_float_price:from': '1000',
