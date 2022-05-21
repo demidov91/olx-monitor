@@ -40,11 +40,8 @@ async def handle_update(request):
 
 async def root_handler(request):
     tg_update = Update.de_json(await request.json(), None)
-    if not tg_update.effective_user:
+    if not tg_update.effective_user or not tg_update.message or not tg_update.message.text:
         return {}
-
-    if not tg_update.message.text:
-        return
 
     chat_id = tg_update.effective_chat.id
 
