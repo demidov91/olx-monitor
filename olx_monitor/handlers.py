@@ -24,13 +24,14 @@ async def handle_browser_url(text: str, chat_id: int):
         {'$set': {'api_url': api_url, 'browser_url': text, 'active': True}, '$setOnInsert': {'seen': []}},
         upsert=True,
     )
-    asyncio.create_task(launch_chat_update(chat_id))
-    return '✅'
+
+    mass_message = await bulk_update(chat_id)
+    return mass_message or '✅'
 
 
-async def launch_chat_update(chat_id: int):
+async def bulk_update(chat_id: int):
     async with ClientSession() as client:
-        await Updater().process_subscription(client, await subscription_collection().find_one({'chat_id': chat_id}))
+        return await Updater().bulk_update(client, chat_id)
 
 
 async def stop_updates(chat_id):

@@ -33,8 +33,7 @@ class Updater:
                 logger.error("chat_id %s is not updated due to %s", data.get('chat_id'), res)
 
     async def process_subscription(self, client: ClientSession, subsription: dict):
-        response = await client.get(subsription['api_url'], timeout=30)
-        data = (await response.json())['data']
+        data = await self._get_data(client, subsription)
 
         for record in data:
             if record['id'] in subsription['seen']:
@@ -51,21 +50,42 @@ class Updater:
                         },
                     },
                 },
-
             )
+
+    async def bulk_update(self, client: ClientSession, chat_id: int):
+        """ Push all new ids into db in one go and build one message for all new links.
+        :return: str or None
+        """
+        subscription = await subscription_collection().find_one({'chat_id': chat_id})
+        data = [x for x in (await self._get_data(client, subscription)) if x['id'] not in subscription['seen']]
+
+        if not data:
+            return
+
+        text = '\n\n'.join(*[build_basic_message(x) for x in data])
+
+        await self.subscriptions.update_one(
+            {'_id': subscription['_id']},
+            {
+                '$push': {
+                    'seen': {
+                        '$each': [x['id'] for x in data],
+                        '$slice': -200,
+                    },
+                },
+            },
+        )
+
+        return text
+
+    async def _get_data(self, client: ClientSession, subscription: dict):
+        response = await client.get(subscription['api_url'], timeout=30)
+        return (await response.json())['data']
 
     @async_retry(retry_count=4, log_args=[1])
     async def notify(self, chat_id: int, record: dict):
-        is_promo = record.get('promotion', {}).get('top_ad')
-        title = record['title']
-        url = record['url']
-
+        basic_message = build_basic_message(record)
         photos = [x['link'].replace(';s={width}x{height}', '') for x in record['photos']]
-        promo_intro = "*Reklama\n" if is_promo else ""
-        params = {x['key']: x['value'].get('label') for x in record['params']}
-
-        basic_message = f'{promo_intro}{title}\n\n{params.get("price")} + {params.get("rent")}\n\n{url}'
-
         if len(photos) == 0:
             await tg_retry_aware(partial(self.bot.send_message, chat_id, text=basic_message))
 
@@ -92,6 +112,16 @@ async def tg_retry_aware(func):
         logger.info('Slow down %ss.', e.retry_after)
         await asyncio.sleep(e.retry_after)
         func()
+
+
+def build_basic_message(olx_record: dict):
+    is_promo = olx_record.get('promotion', {}).get('top_ad')
+    title = olx_record['title']
+    url = olx_record['url']
+    promo_intro = "*Reklama\n" if is_promo else ""
+    params = {x['key']: x['value'].get('label') for x in olx_record['params']}
+
+    return f'{promo_intro}{title}\n\n{params.get("price")} + {params.get("rent")}\n\n{url}'
 
 
 if __name__ == '__main__':
