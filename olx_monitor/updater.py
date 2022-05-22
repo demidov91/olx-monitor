@@ -62,7 +62,7 @@ class Updater:
         if not data:
             return
 
-        text = '\n\n'.join(*[build_basic_message(x) for x in data])
+        text = '\n\n'.join([build_basic_message(x) for x in data])
 
         await self.subscriptions.update_one(
             {'_id': subscription['_id']},
