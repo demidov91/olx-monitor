@@ -61,7 +61,7 @@ async def root_handler(request):
         return {
             'method': 'sendVideo',
             'chat_id': chat_id,
-            'video': 'https://raw.githubusercontent.com/demidov91/olx-monitor/master/static/bot-demo.mp4',
+            'video': 'https://user-images.githubusercontent.com/1383146/169698120-d1d8e047-9df7-4b37-aa12-d873a5d660dd.mp4',
         }
 
 
