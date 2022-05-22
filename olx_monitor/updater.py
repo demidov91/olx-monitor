@@ -1,6 +1,7 @@
 import asyncio
 import logging
 from functools import partial
+from typing import List
 
 from aiohttp import ClientSession, TCPConnector
 import os
@@ -37,9 +38,6 @@ class Updater:
         data = await self._get_data(client, subsription)
 
         for record in data:
-            if record['id'] in subsription['seen']:
-                continue
-
             await self.notify(subsription['chat_id'], record)
             await self.subscriptions.update_one(
                 {'_id': subsription['_id']},
@@ -58,7 +56,7 @@ class Updater:
         :return: str or None
         """
         subscription = await subscription_collection().find_one({'chat_id': chat_id})
-        data = [x for x in (await self._get_data(client, subscription)) if x['id'] not in subscription['seen']]
+        data = await self._get_data(client, subscription)
 
         if not data:
             return
@@ -79,9 +77,21 @@ class Updater:
 
         return text
 
-    async def _get_data(self, client: ClientSession, subscription: dict):
+    async def _get_data(self, client: ClientSession, subscription: dict) -> List[dict]:
         response = await client.get(subscription['api_url'], timeout=30)
-        return (await response.json())['data']
+        all_records = (await response.json())['data']
+        new_records = [x for x in all_records if x['id'] not in subscription['seen']]
+        records_to_show = [x for x in new_records if not is_promo(x)]
+        if not records_to_show:
+            return []
+
+        # Add one promo record.
+        for record in new_records:
+            if is_promo(record):
+                records_to_show.insert(0, record)
+                break
+
+        return records_to_show
 
     @async_retry(retry_count=4, log_args=[1])
     async def notify(self, chat_id: int, record: dict):
@@ -116,13 +126,17 @@ async def tg_retry_aware(func):
 
 
 def build_basic_message(olx_record: dict):
-    is_promo = olx_record.get('promotion', {}).get('top_ad')
+    is_promo = is_promo(olx_record)
     title = olx_record['title']
     url = olx_record['url']
     promo_intro = "*Reklama\n" if is_promo else ""
     params = {x['key']: x['value'].get('label') for x in olx_record['params']}
 
     return f'{promo_intro}{title}\n\n{params.get("price")} + {params.get("rent")}\n\n{url}'
+
+
+def is_promo(olx_record):
+    return olx_record.get('promotion', {}).get('top_ad')
 
 
 if __name__ == '__main__':
