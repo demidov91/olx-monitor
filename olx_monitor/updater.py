@@ -10,6 +10,7 @@ from telegram.error import RetryAfter
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
 from olx_monitor.db import subscription_collection, update_active_connection
+from olx_monitor.constants import MAX_PHOTOS_TO_SEND
 
 logger = logging.getLogger(__name__)
 
@@ -95,12 +96,12 @@ class Updater:
             )
 
         else:
-            if len(photos) > 10:
+            if len(photos) > MAX_PHOTOS_TO_SEND:
                 message = basic_message + '\n(więcej dostępnych zdjęć)'
             else:
                 message = basic_message
 
-            media = [InputMediaPhoto(x) for x in photos[:10]]
+            media = [InputMediaPhoto(x) for x in photos[:MAX_PHOTOS_TO_SEND]]
             media[0].caption = message
             await tg_retry_aware(partial(self.bot.send_media_group, chat_id, media=media))
 

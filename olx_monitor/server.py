@@ -57,6 +57,13 @@ async def root_handler(request):
     if tg_update.message.text.startswith('/help'):
         return build_tg_message(await tg_help(chat_id), chat_id=chat_id)
 
+    if tg_update.message.text.startswith('/start'):
+        return {
+            'method': 'sendVideo',
+            'chat_id': chat_id,
+            'video': 'https://raw.githubusercontent.com/demidov91/olx-monitor/master/static/bot-demo.mp4',
+        }
+
 
 async def init(argv=None):
     logging.basicConfig(level=logging.INFO)

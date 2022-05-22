@@ -14,3 +14,6 @@ HELP_MESSAGE = (
     "скопіюйте адресу сторінці після обрання фільтрів та надішліть її боту. "
     "Він буде постійно досилати вам оновлення, поки не відправите команду /stop\n\n{filter_message}"
 )
+
+# Actually, Telegram Bot API supports up to 10 photos in a media group but it sometimes fails to send them.
+MAX_PHOTOS_TO_SEND = 8
