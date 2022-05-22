@@ -81,13 +81,13 @@ class Updater:
         response = await client.get(subscription['api_url'], timeout=30)
         all_records = (await response.json())['data']
         new_records = [x for x in all_records if x['id'] not in subscription['seen']]
-        records_to_show = [x for x in new_records if not is_promo(x)]
+        records_to_show = [x for x in new_records if not is_promo_record(x)]
         if not records_to_show:
             return []
 
         # Add one promo record.
         for record in new_records:
-            if is_promo(record):
+            if is_promo_record(record):
                 records_to_show.insert(0, record)
                 break
 
@@ -126,7 +126,7 @@ async def tg_retry_aware(func):
 
 
 def build_basic_message(olx_record: dict):
-    is_promo = is_promo(olx_record)
+    is_promo = is_promo_record(olx_record)
     title = olx_record['title']
     url = olx_record['url']
     promo_intro = "*Reklama\n" if is_promo else ""
@@ -135,7 +135,7 @@ def build_basic_message(olx_record: dict):
     return f'{promo_intro}{title}\n\n{params.get("price")} + {params.get("rent")}\n\n{url}'
 
 
-def is_promo(olx_record):
+def is_promo_record(olx_record):
     return olx_record.get('promotion', {}).get('top_ad')
 
 
