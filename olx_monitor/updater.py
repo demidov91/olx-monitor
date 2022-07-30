@@ -6,7 +6,7 @@ from typing import List
 from aiohttp import ClientSession, TCPConnector
 import os
 from telegram import Bot, InputMediaPhoto
-from telegram.error import RetryAfter
+from telegram.error import BadRequest, RetryAfter
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
@@ -113,7 +113,14 @@ class Updater:
 
             media = [InputMediaPhoto(x) for x in photos[:MAX_PHOTOS_TO_SEND]]
             media[0].caption = message
-            await tg_retry_aware(partial(self.bot.send_media_group, chat_id, media=media))
+            try:
+                await tg_retry_aware(partial(self.bot.send_media_group, chat_id, media=media))
+            except BadRequest as e:
+                all_photos_in_one = '\n'.join(photos)
+                logger.exception(
+                    f'Failed to send {len(media)} photos with error message [{e.message}]\n'
+                    f'Photos:\n{all_photos_in_one}'
+                )
 
 
 async def tg_retry_aware(func):
