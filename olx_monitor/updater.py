@@ -6,7 +6,7 @@ from typing import List
 from aiohttp import ClientSession, TCPConnector
 import os
 from telegram import Bot, InputMediaPhoto
-from telegram.error import BadRequest, RetryAfter
+from telegram.error import BadRequest, RetryAfter, Unauthorized
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
@@ -38,18 +38,22 @@ class Updater:
         data = await self._get_data(client, subsription)
 
         for record in data:
-            await self.notify(subsription['chat_id'], record)
-            await self.subscriptions.update_one(
-                {'_id': subsription['_id']},
-                {
-                    '$push': {
-                        'seen': {
-                            '$each': [record['id']],
-                            '$slice': -200,
+            if not (await self.notify(subsription['chat_id'], record)):
+                if (await self.deactivate(subsription['chat_id'])):
+                    return
+
+            else:
+                await self.subscriptions.update_one(
+                    {'_id': subsription['_id']},
+                    {
+                        '$push': {
+                            'seen': {
+                                '$each': [record['id']],
+                                '$slice': -200,
+                            },
                         },
                     },
-                },
-            )
+                )
 
     async def bulk_update(self, client: ClientSession, chat_id: int):
         """ Push all new ids into db in one go and build one message for all new links.
@@ -94,7 +98,7 @@ class Updater:
         return records_to_show
 
     @async_retry(retry_count=4, log_args=[1])
-    async def notify(self, chat_id: int, record: dict):
+    async def notify(self, chat_id: int, record: dict) -> bool:
         basic_message = build_basic_message(record)
         photos = [x['link'].replace(';s={width}x{height}', '') for x in record['photos']]
         if len(photos) == 0:
@@ -121,6 +125,37 @@ class Updater:
                     f'Failed to send {len(media)} photos with error message [{e.message}]\n'
                     f'Photos:\n{all_photos_in_one}'
                 )
+            except Unauthorized:
+                return False
+
+        return True
+
+    async def deactivate(self, chat_id) -> bool:
+        await self.subscriptions.update_one(
+            {'chat_id': chat_id},
+            {'$set': {'active': False}},
+        )
+        logger.info('User %s will be deactivated.', chat_id)
+        try:
+            self.bot.send_message(chat_id, text='...')
+        except Unauthorized:
+            logger.info('User %s has been successfully deactivated.', chat_id)
+            return True
+
+        else:
+            await self.subscriptions.update_one(
+                {'chat_id': chat_id},
+                {'$set': {'active': True}},
+            )
+            try:
+                self.bot.send_message(
+                    chat_id,
+                    text='Будь ласка, натисніть /stop якщо ви більш не жадаєте отримувати оновлення.',
+                )
+            except Unauthorized:
+                pass
+
+            return False
 
 
 async def tg_retry_aware(func):
