@@ -122,7 +122,8 @@ class Updater:
                 message = basic_message
 
             media = [InputMediaPhoto(x) for x in photos[:MAX_PHOTOS_TO_SEND]]
-            media[0].caption = message
+            with media[0]._unfrozen():
+                media[0].caption = message
             try:
                 await tg_retry_aware(partial(self.bot.send_media_group, chat_id, media=media))
             except BadRequest as e:
@@ -143,7 +144,7 @@ class Updater:
         )
         logger.info('User %s will be deactivated.', chat_id)
         try:
-            self.bot.send_message(chat_id, text='...')
+            await self.bot.send_message(chat_id, text='...')
         except Forbidden:
             logger.info('User %s has been successfully deactivated.', chat_id)
             return True
@@ -154,7 +155,7 @@ class Updater:
                 {'$set': {'active': True}},
             )
             try:
-                self.bot.send_message(
+                await self.bot.send_message(
                     chat_id,
                     text='Будь ласка, натисніть /stop якщо ви більш не жадаєте отримувати оновлення.',
                 )
