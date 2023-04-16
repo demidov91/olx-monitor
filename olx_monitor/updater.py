@@ -1,12 +1,14 @@
 import asyncio
 import logging
+import re
 from functools import partial
 from typing import List
+from urllib import parse
 
 from aiohttp import ClientSession, TCPConnector
 import os
 from telegram import Bot, InputMediaPhoto
-from telegram.error import BadRequest, RetryAfter, Unauthorized
+from telegram.error import BadRequest, RetryAfter, Forbidden
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
@@ -14,6 +16,10 @@ from olx_monitor.db import subscription_collection, update_active_connection
 from olx_monitor.constants import MAX_PHOTOS_TO_SEND
 
 logger = logging.getLogger(__name__)
+
+
+PRICE_OLX_PARAM = 'price'
+RENT_OLX_PARAM = 'rent'
 
 
 class Updater:
@@ -38,7 +44,8 @@ class Updater:
         data = await self._get_data(client, subsription)
 
         for record in data:
-            if not (await self.notify(subsription['chat_id'], record)):
+            successfully_notified = await self.notify(subsription['chat_id'], record)
+            if not successfully_notified:
                 if (await self.deactivate(subsription['chat_id'])):
                     return
 
@@ -82,8 +89,7 @@ class Updater:
         return text
 
     async def _get_data(self, client: ClientSession, subscription: dict) -> List[dict]:
-        response = await client.get(subscription['api_url'], timeout=30)
-        all_records = (await response.json())['data']
+        all_records = await get_relevant_news(client, subscription['api_url'])
         new_records = [x for x in all_records if x['id'] not in subscription['seen']]
         records_to_show = [x for x in new_records if not is_promo_record(x)]
         if not records_to_show:
@@ -125,7 +131,7 @@ class Updater:
                     f'Failed to send {len(media)} photos with error message [{e.message}]\n'
                     f'Photos:\n{all_photos_in_one}'
                 )
-            except Unauthorized:
+            except Forbidden:
                 return False
 
         return True
@@ -138,7 +144,7 @@ class Updater:
         logger.info('User %s will be deactivated.', chat_id)
         try:
             self.bot.send_message(chat_id, text='...')
-        except Unauthorized:
+        except Forbidden:
             logger.info('User %s has been successfully deactivated.', chat_id)
             return True
 
@@ -152,7 +158,7 @@ class Updater:
                     chat_id,
                     text='Будь ласка, натисніть /stop якщо ви більш не жадаєте отримувати оновлення.',
                 )
-            except Unauthorized:
+            except Forbidden:
                 pass
 
             return False
@@ -167,14 +173,47 @@ async def tg_retry_aware(func):
         func()
 
 
+async def get_relevant_news(client, api_url: str):
+    """Query remote data. Always consider total price when price limitation is specified."""
+    _max_price_param = 'filter_float_price:to'
+    _min_price_param = 'filter_float_price:from'
+    records = (await (await client.get(api_url, timeout=30)).json())['data']
+
+    parsed_url = parse.urlparse(api_url)
+    all_query_params = parse.parse_qs(parsed_url.query)
+    if _min_price_param in all_query_params or _max_price_param in all_query_params:
+        min_price = float((all_query_params.get(_min_price_param) or [0])[0])
+        max_price = float((all_query_params.get(_max_price_param) or ['inf'])[0])
+        records = [x for x in records if is_relevant_olx_record(x, min_price, max_price)]
+
+    return records
+
+
+def is_relevant_olx_record(record: dict, min_price: float, max_price: float):
+    params = get_record_params(record)
+    total_price = str_to_price(params.get(PRICE_OLX_PARAM, '')) + str_to_price(params.get(RENT_OLX_PARAM, ''))
+    return min_price <= total_price <= max_price
+
+def str_to_price(str_price: str):
+    m = re.search('([\d\s]+)', str_price)
+    if m is None:
+        return 0
+
+    return float(re.sub('\s', '', m.group(1)))
+
+
 def build_basic_message(olx_record: dict):
     is_promo = is_promo_record(olx_record)
     title = olx_record['title']
     url = olx_record['url']
     promo_intro = "*Reklama\n" if is_promo else ""
-    params = {x['key']: x['value'].get('label') for x in olx_record['params']}
+    params = get_record_params(olx_record)
+    return f'{promo_intro}{title}\n\n{params.get(PRICE_OLX_PARAM)} + {params.get(RENT_OLX_PARAM)}\n\n{url}'
 
-    return f'{promo_intro}{title}\n\n{params.get("price")} + {params.get("rent")}\n\n{url}'
+
+def get_record_params(olx_record: dict) -> dict:
+    return {x['key']: x['value'].get('label') for x in olx_record['params']}
+
 
 
 def is_promo_record(olx_record):

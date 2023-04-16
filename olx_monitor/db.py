@@ -1,6 +1,6 @@
 import os
 
-import motor
+import motor.motor_asyncio
 
 from contextvars import ContextVar
 
@@ -10,7 +10,7 @@ _connection = ContextVar('connection')
 
 
 def get_connection():
-    return motor.MotorClient(os.environ['DB_CONNSTRING'])
+    return motor.motor_asyncio.AsyncIOMotorClient(os.environ['DB_CONNSTRING'])
 
 
 def update_active_connection():
@@ -18,5 +18,5 @@ def update_active_connection():
 
 
 def subscription_collection() -> 'motor.core.AgnosticDatabase':
-    return _connection.get()['olx-monitor']['subscription']
+    return _connection.get()[os.environ['DATABASE_NAME']]['subscription']
 
