@@ -527,6 +527,18 @@
     "region-id": 15,
     "region-normalized_name": "kujawsko-pomorskie"
   },
+  "kruszwica": {
+    "id": 66657,
+    "name": "Kruszwica",
+    "county": "inowroc\u0142awski",
+    "longitude": 18.33116,
+    "latitude": 52.66974,
+    "zoom": 12,
+    "radius": 2.25,
+    "has_districts": false,
+    "region-id": 15,
+    "region-normalized_name": "kujawsko-pomorskie"
+  },
   "lipno": {
     "id": 48987,
     "name": "Lipno",
@@ -575,12 +587,12 @@
     "region-id": 15,
     "region-normalized_name": "kujawsko-pomorskie"
   },
-  "radziejow": {
-    "id": 123737,
-    "name": "Radziej\u00f3w",
-    "county": "radziejowski",
-    "longitude": 18.52907,
-    "latitude": 52.62296,
+  "pakosc_70331": {
+    "id": 70331,
+    "name": "Pako\u015b\u0107",
+    "county": "inowroc\u0142awski",
+    "longitude": 18.08571,
+    "latitude": 52.80291,
     "zoom": 12,
     "radius": 2.25,
     "has_districts": false,
@@ -595,18 +607,6 @@
     "latitude": 53.06519,
     "zoom": 12,
     "radius": 3.75,
-    "has_districts": false,
-    "region-id": 15,
-    "region-normalized_name": "kujawsko-pomorskie"
-  },
-  "sepolno-krajenskie": {
-    "id": 124481,
-    "name": "S\u0119p\u00f3lno Kraje\u0144skie",
-    "county": "s\u0119pole\u0144ski",
-    "longitude": 17.53593,
-    "latitude": 53.45469,
-    "zoom": 12,
-    "radius": 2.25,
     "has_districts": false,
     "region-id": 15,
     "region-normalized_name": "kujawsko-pomorskie"
@@ -755,18 +755,6 @@
     "region-id": 8,
     "region-normalized_name": "lubelskie"
   },
-  "bogucin": {
-    "id": 21553,
-    "name": "Bogucin",
-    "county": "lubelski",
-    "longitude": 22.35769,
-    "latitude": 51.33098,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 8,
-    "region-normalized_name": "lubelskie"
-  },
   "bychawa": {
     "id": 22157,
     "name": "Bychawa",
@@ -827,6 +815,18 @@
     "region-id": 8,
     "region-normalized_name": "lubelskie"
   },
+  "kamionka_7577": {
+    "id": 7577,
+    "name": "Kamionka",
+    "county": "lubartowski",
+    "longitude": 22.46367,
+    "latitude": 51.4707,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 8,
+    "region-normalized_name": "lubelskie"
+  },
   "krasnystaw": {
     "id": 136619,
     "name": "Krasnystaw",
@@ -851,6 +851,18 @@
     "region-id": 8,
     "region-normalized_name": "lubelskie"
   },
+  "krepiec": {
+    "id": 9329,
+    "name": "Kr\u0119piec",
+    "county": "\u015bwidnicki",
+    "longitude": 22.77208,
+    "latitude": 51.22415,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 8,
+    "region-normalized_name": "lubelskie"
+  },
   "lubartow": {
     "id": 67313,
     "name": "Lubart\u00f3w",
@@ -871,6 +883,18 @@
     "latitude": 51.23955,
     "zoom": 13,
     "radius": 6.75,
+    "has_districts": false,
+    "region-id": 8,
+    "region-normalized_name": "lubelskie"
+  },
+  "laszczow": {
+    "id": 10413,
+    "name": "\u0141aszcz\u00f3w",
+    "county": "tomaszowski",
+    "longitude": 23.71868,
+    "latitude": 50.52906,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 8,
     "region-normalized_name": "lubelskie"
@@ -1031,18 +1055,6 @@
     "region-id": 8,
     "region-normalized_name": "lubelskie"
   },
-  "wisznice": {
-    "id": 19345,
-    "name": "Wisznice",
-    "county": "bialski",
-    "longitude": 23.20994,
-    "latitude": 51.78815,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 8,
-    "region-normalized_name": "lubelskie"
-  },
   "wlodawa": {
     "id": 58515,
     "name": "W\u0142odawa",
@@ -1051,18 +1063,6 @@
     "latitude": 51.55029,
     "zoom": 12,
     "radius": 3,
-    "has_districts": false,
-    "region-id": 8,
-    "region-normalized_name": "lubelskie"
-  },
-  "wojcieszkow": {
-    "id": 19437,
-    "name": "Wojcieszk\u00f3w",
-    "county": "\u0142ukowski",
-    "longitude": 22.31634,
-    "latitude": 51.76784,
-    "zoom": 12,
-    "radius": 1.5,
     "has_districts": false,
     "region-id": 8,
     "region-normalized_name": "lubelskie"
@@ -1115,18 +1115,6 @@
     "region-id": 9,
     "region-normalized_name": "lubuskie"
   },
-  "gorzyca_27477": {
-    "id": 27477,
-    "name": "G\u00f3rzyca",
-    "county": "s\u0142ubicki",
-    "longitude": 14.65541,
-    "latitude": 52.49387,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 9,
-    "region-normalized_name": "lubuskie"
-  },
   "gubin": {
     "id": 85841,
     "name": "Gubin",
@@ -1135,6 +1123,18 @@
     "latitude": 51.94796,
     "zoom": 12,
     "radius": 3.75,
+    "has_districts": false,
+    "region-id": 9,
+    "region-normalized_name": "lubuskie"
+  },
+  "klenica": {
+    "id": 8199,
+    "name": "Klenica",
+    "county": "zielonog\u00f3rski",
+    "longitude": 15.78431,
+    "latitude": 51.99154,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 9,
     "region-normalized_name": "lubuskie"
@@ -1175,24 +1175,12 @@
     "region-id": 9,
     "region-normalized_name": "lubuskie"
   },
-  "leszno-gorne": {
-    "id": 30907,
-    "name": "Leszno G\u00f3rne",
-    "county": "\u017caga\u0144ski",
-    "longitude": 15.61662,
-    "latitude": 51.47514,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 9,
-    "region-normalized_name": "lubuskie"
-  },
-  "lipinki-luzyckie": {
-    "id": 31015,
-    "name": "Lipinki \u0141u\u017cyckie",
-    "county": "\u017carski",
-    "longitude": 15.00591,
-    "latitude": 51.64062,
+  "lipki-wielkie": {
+    "id": 9989,
+    "name": "Lipki Wielkie",
+    "county": "gorzowski",
+    "longitude": 15.53256,
+    "latitude": 52.72501,
     "zoom": 12,
     "radius": 1.5,
     "has_districts": false,
@@ -1207,18 +1195,6 @@
     "latitude": 51.78453,
     "zoom": 12,
     "radius": 3,
-    "has_districts": false,
-    "region-id": 9,
-    "region-normalized_name": "lubuskie"
-  },
-  "lezyca": {
-    "id": 31495,
-    "name": "\u0141\u0119\u017cyca",
-    "county": "zielonog\u00f3rski",
-    "longitude": 15.47798,
-    "latitude": 51.99379,
-    "zoom": 12,
-    "radius": 1.5,
     "has_districts": false,
     "region-id": 9,
     "region-normalized_name": "lubuskie"
@@ -1247,18 +1223,6 @@
     "region-id": 9,
     "region-normalized_name": "lubuskie"
   },
-  "nowe-miasteczko": {
-    "id": 33211,
-    "name": "Nowe Miasteczko",
-    "county": "nowosolski",
-    "longitude": 15.73354,
-    "latitude": 51.68999,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 9,
-    "region-normalized_name": "lubuskie"
-  },
   "nowogrod-bobrzanski": {
     "id": 91727,
     "name": "Nowogr\u00f3d Bobrza\u0144ski",
@@ -1271,6 +1235,18 @@
     "region-id": 9,
     "region-normalized_name": "lubuskie"
   },
+  "przyborow": {
+    "id": 14455,
+    "name": "Przybor\u00f3w",
+    "county": "nowosolski",
+    "longitude": 15.77297,
+    "latitude": 51.80061,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 9,
+    "region-normalized_name": "lubuskie"
+  },
   "rzepin": {
     "id": 72437,
     "name": "Rzepin",
@@ -1279,6 +1255,18 @@
     "latitude": 52.34816,
     "zoom": 12,
     "radius": 2.25,
+    "has_districts": false,
+    "region-id": 9,
+    "region-normalized_name": "lubuskie"
+  },
+  "sieniawa-zarska": {
+    "id": 15519,
+    "name": "Sieniawa \u017barska",
+    "county": "\u017carski",
+    "longitude": 15.06519,
+    "latitude": 51.63974,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 9,
     "region-normalized_name": "lubuskie"
@@ -1303,6 +1291,18 @@
     "latitude": 52.35254,
     "zoom": 12,
     "radius": 3.75,
+    "has_districts": false,
+    "region-id": 9,
+    "region-normalized_name": "lubuskie"
+  },
+  "stare-stracze": {
+    "id": 16225,
+    "name": "Stare Str\u0105cze",
+    "county": "wschowski",
+    "longitude": 16.12396,
+    "latitude": 51.84626,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 9,
     "region-normalized_name": "lubuskie"
@@ -2075,6 +2075,18 @@
     "region-id": 4,
     "region-normalized_name": "malopolskie"
   },
+  "stary-sacz": {
+    "id": 16309,
+    "name": "Stary S\u0105cz",
+    "county": "nowos\u0105decki",
+    "longitude": 20.63727,
+    "latitude": 49.56054,
+    "zoom": 12,
+    "radius": 2.25,
+    "has_districts": false,
+    "region-id": 4,
+    "region-normalized_name": "malopolskie"
+  },
   "tarnow": {
     "id": 17369,
     "name": "Tarn\u00f3w",
@@ -2123,18 +2135,6 @@
     "region-id": 4,
     "region-normalized_name": "malopolskie"
   },
-  "wola-rzedzinska": {
-    "id": 40371,
-    "name": "Wola Rz\u0119dzi\u0144ska",
-    "county": "tarnowski",
-    "longitude": 21.06447,
-    "latitude": 50.03711,
-    "zoom": 12,
-    "radius": 2.25,
-    "has_districts": false,
-    "region-id": 4,
-    "region-normalized_name": "malopolskie"
-  },
   "wolbrom": {
     "id": 19581,
     "name": "Wolbrom",
@@ -2177,18 +2177,6 @@
     "county": "garwoli\u0144ski",
     "longitude": 21.61667,
     "latitude": 51.89592,
-    "zoom": 12,
-    "radius": 3.75,
-    "has_districts": false,
-    "region-id": 2,
-    "region-normalized_name": "mazowieckie"
-  },
-  "gostynin": {
-    "id": 6349,
-    "name": "Gostynin",
-    "county": "gostyni\u0144ski",
-    "longitude": 19.46384,
-    "latitude": 52.42707,
     "zoom": 12,
     "radius": 3.75,
     "has_districts": false,
@@ -2459,6 +2447,18 @@
     "region-id": 2,
     "region-normalized_name": "mazowieckie"
   },
+  "sokolow-podlaski": {
+    "id": 15963,
+    "name": "Soko\u0142\u00f3w Podlaski",
+    "county": "soko\u0142owski",
+    "longitude": 22.24062,
+    "latitude": 52.40809,
+    "zoom": 12,
+    "radius": 3.75,
+    "has_districts": false,
+    "region-id": 2,
+    "region-normalized_name": "mazowieckie"
+  },
   "warszawa": {
     "id": 17871,
     "name": "Warszawa",
@@ -2531,54 +2531,6 @@
     "region-id": 12,
     "region-normalized_name": "opolskie"
   },
-  "cisek": {
-    "id": 22775,
-    "name": "Cisek",
-    "county": "k\u0119dzierzy\u0144sko-kozielski",
-    "longitude": 18.20171,
-    "latitude": 50.28142,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 12,
-    "region-normalized_name": "opolskie"
-  },
-  "daniec": {
-    "id": 25893,
-    "name": "Daniec",
-    "county": "opolski",
-    "longitude": 18.13882,
-    "latitude": 50.61925,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 12,
-    "region-normalized_name": "opolskie"
-  },
-  "dobrzen-wielki": {
-    "id": 26273,
-    "name": "Dobrze\u0144 Wielki",
-    "county": "opolski",
-    "longitude": 17.84878,
-    "latitude": 50.76699,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 12,
-    "region-normalized_name": "opolskie"
-  },
-  "dylaki": {
-    "id": 26463,
-    "name": "Dylaki",
-    "county": "opolski",
-    "longitude": 18.1904,
-    "latitude": 50.7298,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 12,
-    "region-normalized_name": "opolskie"
-  },
   "glogowek": {
     "id": 27195,
     "name": "G\u0142og\u00f3wek",
@@ -2639,6 +2591,30 @@
     "region-id": 12,
     "region-normalized_name": "opolskie"
   },
+  "kamienica": {
+    "id": 7533,
+    "name": "Kamienica",
+    "county": "nyski",
+    "longitude": 16.95389,
+    "latitude": 50.45015,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 12,
+    "region-normalized_name": "opolskie"
+  },
+  "karlowice": {
+    "id": 7641,
+    "name": "Kar\u0142owice",
+    "county": "opolski",
+    "longitude": 17.71211,
+    "latitude": 50.87467,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 12,
+    "region-normalized_name": "opolskie"
+  },
   "kedzierzyn-kozle": {
     "id": 7923,
     "name": "K\u0119dzierzyn-Ko\u017ale",
@@ -2648,6 +2624,18 @@
     "zoom": 11,
     "radius": 5.25,
     "has_districts": true,
+    "region-id": 12,
+    "region-normalized_name": "opolskie"
+  },
+  "kielcza": {
+    "id": 8097,
+    "name": "Kielcza",
+    "county": "strzelecki",
+    "longitude": 18.55738,
+    "latitude": 50.57072,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
     "region-id": 12,
     "region-normalized_name": "opolskie"
   },
@@ -2675,6 +2663,18 @@
     "region-id": 12,
     "region-normalized_name": "opolskie"
   },
+  "koscierzyce": {
+    "id": 8821,
+    "name": "Ko\u015bcierzyce",
+    "county": "brzeski",
+    "longitude": 17.5332,
+    "latitude": 50.89432,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 12,
+    "region-normalized_name": "opolskie"
+  },
   "krapkowice": {
     "id": 9265,
     "name": "Krapkowice",
@@ -2695,6 +2695,18 @@
     "latitude": 50.74775,
     "zoom": 12,
     "radius": 2.25,
+    "has_districts": false,
+    "region-id": 12,
+    "region-normalized_name": "opolskie"
+  },
+  "lubniany": {
+    "id": 11065,
+    "name": "\u0141ubniany",
+    "county": "opolski",
+    "longitude": 18.00041,
+    "latitude": 50.77998,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 12,
     "region-normalized_name": "opolskie"
@@ -2867,18 +2879,6 @@
     "region-id": 12,
     "region-normalized_name": "opolskie"
   },
-  "zedowice": {
-    "id": 21129,
-    "name": "\u017b\u0119dowice",
-    "county": "strzelecki",
-    "longitude": 18.51209,
-    "latitude": 50.58405,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 12,
-    "region-normalized_name": "opolskie"
-  },
   "boguchwala": {
     "id": 3423,
     "name": "Boguchwa\u0142a",
@@ -2981,18 +2981,6 @@
     "county": "ni\u017ca\u0144ski",
     "longitude": 22.14284,
     "latitude": 50.37563,
-    "zoom": 12,
-    "radius": 2.25,
-    "has_districts": false,
-    "region-id": 17,
-    "region-normalized_name": "podkarpackie"
-  },
-  "kolbuszowa": {
-    "id": 117185,
-    "name": "Kolbuszowa",
-    "county": "kolbuszowski",
-    "longitude": 21.77589,
-    "latitude": 50.24322,
     "zoom": 12,
     "radius": 2.25,
     "has_districts": false,
@@ -3215,6 +3203,18 @@
     "region-id": 17,
     "region-normalized_name": "podkarpackie"
   },
+  "strzyzow": {
+    "id": 73747,
+    "name": "Strzy\u017c\u00f3w",
+    "county": "strzy\u017cowski",
+    "longitude": 21.7894,
+    "latitude": 49.86908,
+    "zoom": 12,
+    "radius": 2.25,
+    "has_districts": false,
+    "region-id": 17,
+    "region-normalized_name": "podkarpackie"
+  },
   "tarnobrzeg": {
     "id": 56407,
     "name": "Tarnobrzeg",
@@ -3227,12 +3227,12 @@
     "region-id": 17,
     "region-normalized_name": "podkarpackie"
   },
-  "zagorz": {
-    "id": 110967,
-    "name": "Zag\u00f3rz",
-    "county": "sanocki",
-    "longitude": 22.26812,
-    "latitude": 49.51312,
+  "ustrzyki-dolne": {
+    "id": 75025,
+    "name": "Ustrzyki Dolne",
+    "county": "bieszczadzki",
+    "longitude": 22.60287,
+    "latitude": 49.43055,
     "zoom": 12,
     "radius": 2.25,
     "has_districts": false,
@@ -3347,6 +3347,18 @@
     "region-id": 18,
     "region-normalized_name": "podlaskie"
   },
+  "fasty": {
+    "id": 44581,
+    "name": "Fasty",
+    "county": "bia\u0142ostocki",
+    "longitude": 23.05789,
+    "latitude": 53.17015,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 18,
+    "region-normalized_name": "podlaskie"
+  },
   "grajewo": {
     "id": 27567,
     "name": "Grajewo",
@@ -3367,6 +3379,18 @@
     "latitude": 52.74674,
     "zoom": 12,
     "radius": 4.5,
+    "has_districts": false,
+    "region-id": 18,
+    "region-normalized_name": "podlaskie"
+  },
+  "kleosin": {
+    "id": 8201,
+    "name": "Kleosin",
+    "county": "bia\u0142ostocki",
+    "longitude": 23.11793,
+    "latitude": 53.09688,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 18,
     "region-normalized_name": "podlaskie"
@@ -3431,42 +3455,6 @@
     "region-id": 18,
     "region-normalized_name": "podlaskie"
   },
-  "radzilow": {
-    "id": 35649,
-    "name": "Radzi\u0142\u00f3w",
-    "county": "grajewski",
-    "longitude": 22.41018,
-    "latitude": 53.40992,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 18,
-    "region-normalized_name": "podlaskie"
-  },
-  "rudka_35999": {
-    "id": 35999,
-    "name": "Rudka",
-    "county": "bielski",
-    "longitude": 22.73271,
-    "latitude": 52.72191,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 18,
-    "region-normalized_name": "podlaskie"
-  },
-  "rutki-kossaki": {
-    "id": 36101,
-    "name": "Rutki-Kossaki",
-    "county": "zambrowski",
-    "longitude": 22.442,
-    "latitude": 53.08808,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 18,
-    "region-normalized_name": "podlaskie"
-  },
   "sejny": {
     "id": 36383,
     "name": "Sejny",
@@ -3499,6 +3487,18 @@
     "latitude": 53.40539,
     "zoom": 12,
     "radius": 3.75,
+    "has_districts": false,
+    "region-id": 18,
+    "region-normalized_name": "podlaskie"
+  },
+  "stare-kupiski": {
+    "id": 16203,
+    "name": "Stare Kupiski",
+    "county": "\u0142om\u017cy\u0144ski",
+    "longitude": 21.99647,
+    "latitude": 53.19173,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 18,
     "region-normalized_name": "podlaskie"
@@ -3635,18 +3635,6 @@
     "region-id": 5,
     "region-normalized_name": "pomorskie"
   },
-  "czarne_4633": {
-    "id": 4633,
-    "name": "Czarne",
-    "county": "cz\u0142uchowski",
-    "longitude": 16.94003,
-    "latitude": 53.68293,
-    "zoom": 12,
-    "radius": 2.25,
-    "has_districts": false,
-    "region-id": 5,
-    "region-normalized_name": "pomorskie"
-  },
   "czersk": {
     "id": 25795,
     "name": "Czersk",
@@ -3671,12 +3659,12 @@
     "region-id": 5,
     "region-normalized_name": "pomorskie"
   },
-  "dzierzgon": {
-    "id": 5401,
-    "name": "Dzierzgo\u0144",
-    "county": "sztumski",
-    "longitude": 19.35025,
-    "latitude": 53.92068,
+  "debrzno": {
+    "id": 62217,
+    "name": "Debrzno",
+    "county": "cz\u0142uchowski",
+    "longitude": 17.23855,
+    "latitude": 53.54842,
     "zoom": 12,
     "radius": 2.25,
     "has_districts": false,
@@ -3791,6 +3779,18 @@
     "region-id": 5,
     "region-normalized_name": "pomorskie"
   },
+  "pelplin": {
+    "id": 13387,
+    "name": "Pelplin",
+    "county": "tczewski",
+    "longitude": 18.69722,
+    "latitude": 53.92722,
+    "zoom": 12,
+    "radius": 2.25,
+    "has_districts": false,
+    "region-id": 5,
+    "region-normalized_name": "pomorskie"
+  },
   "pruszcz-gdanski": {
     "id": 35361,
     "name": "Pruszcz Gda\u0144ski",
@@ -3839,12 +3839,12 @@
     "region-id": 5,
     "region-normalized_name": "pomorskie"
   },
-  "sierakowice": {
-    "id": 36517,
-    "name": "Sierakowice",
-    "county": "kartuski",
-    "longitude": 17.89713,
-    "latitude": 54.34685,
+  "skarszewy": {
+    "id": 15617,
+    "name": "Skarszewy",
+    "county": "starogardzki",
+    "longitude": 18.44173,
+    "latitude": 54.07072,
     "zoom": 12,
     "radius": 2.25,
     "has_districts": false,
@@ -4007,18 +4007,6 @@
     "region-id": 6,
     "region-normalized_name": "slaskie"
   },
-  "cieszyn": {
-    "id": 4541,
-    "name": "Cieszyn",
-    "county": "cieszy\u0144ski",
-    "longitude": 18.65702,
-    "latitude": 49.73482,
-    "zoom": 12,
-    "radius": 4.5,
-    "has_districts": false,
-    "region-id": 6,
-    "region-normalized_name": "slaskie"
-  },
   "czechowice-dziedzice": {
     "id": 25767,
     "name": "Czechowice-Dziedzice",
@@ -4028,18 +4016,6 @@
     "zoom": 12,
     "radius": 4.5,
     "has_districts": false,
-    "region-id": 6,
-    "region-normalized_name": "slaskie"
-  },
-  "czeladz": {
-    "id": 4705,
-    "name": "Czelad\u017a",
-    "county": "b\u0119dzi\u0144ski",
-    "longitude": 19.07778,
-    "latitude": 50.31377,
-    "zoom": 12,
-    "radius": 4.5,
-    "has_districts": true,
     "region-id": 6,
     "region-normalized_name": "slaskie"
   },
@@ -4127,6 +4103,42 @@
     "region-id": 6,
     "region-normalized_name": "slaskie"
   },
+  "lubliniec": {
+    "id": 89633,
+    "name": "Lubliniec",
+    "county": "lubliniecki",
+    "longitude": 18.68853,
+    "latitude": 50.67139,
+    "zoom": 12,
+    "radius": 3.34432,
+    "has_districts": false,
+    "region-id": 6,
+    "region-normalized_name": "slaskie"
+  },
+  "laziska-gorne": {
+    "id": 10435,
+    "name": "\u0141aziska G\u00f3rne",
+    "county": "miko\u0142owski",
+    "longitude": 18.84118,
+    "latitude": 50.14913,
+    "zoom": 12,
+    "radius": 4.5,
+    "has_districts": true,
+    "region-id": 6,
+    "region-normalized_name": "slaskie"
+  },
+  "mikolow": {
+    "id": 11631,
+    "name": "Miko\u0142\u00f3w",
+    "county": "miko\u0142owski",
+    "longitude": 18.89011,
+    "latitude": 50.17769,
+    "zoom": 12,
+    "radius": 4.5,
+    "has_districts": true,
+    "region-id": 6,
+    "region-normalized_name": "slaskie"
+  },
   "myslowice": {
     "id": 50917,
     "name": "Mys\u0142owice",
@@ -4147,18 +4159,6 @@
     "latitude": 50.36347,
     "zoom": 12,
     "radius": 5.25,
-    "has_districts": false,
-    "region-id": 6,
-    "region-normalized_name": "slaskie"
-  },
-  "pszczyna": {
-    "id": 35509,
-    "name": "Pszczyna",
-    "county": "pszczy\u0144ski",
-    "longitude": 18.94733,
-    "latitude": 49.9791,
-    "zoom": 12,
-    "radius": 4.5,
     "has_districts": false,
     "region-id": 6,
     "region-normalized_name": "slaskie"
@@ -4331,18 +4331,6 @@
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
   },
-  "bodzentyn": {
-    "id": 42421,
-    "name": "Bodzentyn",
-    "county": "kielecki",
-    "longitude": 20.95918,
-    "latitude": 50.94068,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 13,
-    "region-normalized_name": "swietokrzyskie"
-  },
   "busko-zdroj": {
     "id": 3997,
     "name": "Busko-Zdr\u00f3j",
@@ -4427,6 +4415,30 @@
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
   },
+  "koprzywnica": {
+    "id": 8581,
+    "name": "Koprzywnica",
+    "county": "sandomierski",
+    "longitude": 21.58588,
+    "latitude": 50.59235,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 13,
+    "region-normalized_name": "swietokrzyskie"
+  },
+  "leszczyny": {
+    "id": 9819,
+    "name": "Leszczyny",
+    "county": "kielecki",
+    "longitude": 20.76064,
+    "latitude": 50.87417,
+    "zoom": 12,
+    "radius": 1.5,
+    "has_districts": false,
+    "region-id": 13,
+    "region-normalized_name": "swietokrzyskie"
+  },
   "lagow": {
     "id": 31365,
     "name": "\u0141ag\u00f3w",
@@ -4463,12 +4475,12 @@
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
   },
-  "niestachow": {
-    "id": 33003,
-    "name": "Niestach\u00f3w",
-    "county": "kielecki",
-    "longitude": 20.74265,
-    "latitude": 50.82418,
+  "michalow_11511": {
+    "id": 11511,
+    "name": "Micha\u0142\u00f3w",
+    "county": "pi\u0144czowski",
+    "longitude": 20.40424,
+    "latitude": 50.48873,
     "zoom": 12,
     "radius": 1.5,
     "has_districts": false,
@@ -4499,18 +4511,6 @@
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
   },
-  "ozarow": {
-    "id": 34167,
-    "name": "O\u017car\u00f3w",
-    "county": "opatowski",
-    "longitude": 21.6671,
-    "latitude": 50.88627,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 13,
-    "region-normalized_name": "swietokrzyskie"
-  },
   "pinczow": {
     "id": 52521,
     "name": "Pi\u0144cz\u00f3w",
@@ -4523,18 +4523,6 @@
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
   },
-  "pliskowola": {
-    "id": 34567,
-    "name": "Pliskowola",
-    "county": "staszowski",
-    "longitude": 21.40038,
-    "latitude": 50.51243,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 13,
-    "region-normalized_name": "swietokrzyskie"
-  },
   "polaniec": {
     "id": 93127,
     "name": "Po\u0142aniec",
@@ -4543,6 +4531,18 @@
     "latitude": 50.43179,
     "zoom": 12,
     "radius": 2.25,
+    "has_districts": false,
+    "region-id": 13,
+    "region-normalized_name": "swietokrzyskie"
+  },
+  "radlin_14659": {
+    "id": 14659,
+    "name": "Radlin",
+    "county": "kielecki",
+    "longitude": 20.75416,
+    "latitude": 50.86084,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
@@ -4619,18 +4619,6 @@
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
   },
-  "stopnica": {
-    "id": 37323,
-    "name": "Stopnica",
-    "county": "buski",
-    "longitude": 20.93972,
-    "latitude": 50.43957,
-    "zoom": 12,
-    "radius": 1.5,
-    "has_districts": false,
-    "region-id": 13,
-    "region-normalized_name": "swietokrzyskie"
-  },
   "suchedniow": {
     "id": 95731,
     "name": "Suchedni\u00f3w",
@@ -4639,6 +4627,18 @@
     "latitude": 51.04375,
     "zoom": 12,
     "radius": 2.25,
+    "has_districts": false,
+    "region-id": 13,
+    "region-normalized_name": "swietokrzyskie"
+  },
+  "szewna": {
+    "id": 17071,
+    "name": "Szewna",
+    "county": "ostrowiecki",
+    "longitude": 21.36605,
+    "latitude": 50.9149,
+    "zoom": 12,
+    "radius": 1.5,
     "has_districts": false,
     "region-id": 13,
     "region-normalized_name": "swietokrzyskie"
@@ -5051,18 +5051,6 @@
     "region-id": 1,
     "region-normalized_name": "wielkopolskie"
   },
-  "czarnkow": {
-    "id": 4639,
-    "name": "Czarnk\u00f3w",
-    "county": "czarnkowsko-trzcianecki",
-    "longitude": 16.56829,
-    "latitude": 52.90161,
-    "zoom": 12,
-    "radius": 3,
-    "has_districts": false,
-    "region-id": 1,
-    "region-normalized_name": "wielkopolskie"
-  },
   "gniezno": {
     "id": 6179,
     "name": "Gniezno",
@@ -5083,18 +5071,6 @@
     "latitude": 51.88363,
     "zoom": 12,
     "radius": 4.5,
-    "has_districts": false,
-    "region-id": 1,
-    "region-normalized_name": "wielkopolskie"
-  },
-  "grodzisk-wielkopolski": {
-    "id": 6605,
-    "name": "Grodzisk Wielkopolski",
-    "county": "grodziski",
-    "longitude": 16.36207,
-    "latitude": 52.22705,
-    "zoom": 12,
-    "radius": 3,
     "has_districts": false,
     "region-id": 1,
     "region-normalized_name": "wielkopolskie"
@@ -5155,6 +5131,18 @@
     "latitude": 52.08491,
     "zoom": 12,
     "radius": 4.5,
+    "has_districts": false,
+    "region-id": 1,
+    "region-normalized_name": "wielkopolskie"
+  },
+  "kozieglowy_8905": {
+    "id": 8905,
+    "name": "Kozieg\u0142owy",
+    "county": "pozna\u0144ski",
+    "longitude": 16.99509,
+    "latitude": 52.44863,
+    "zoom": 12,
+    "radius": 1,
     "has_districts": false,
     "region-id": 1,
     "region-normalized_name": "wielkopolskie"
@@ -5288,6 +5276,18 @@
     "zoom": 12,
     "radius": 4.5,
     "has_districts": true,
+    "region-id": 1,
+    "region-normalized_name": "wielkopolskie"
+  },
+  "slupca": {
+    "id": 15815,
+    "name": "S\u0142upca",
+    "county": "s\u0142upecki",
+    "longitude": 17.88336,
+    "latitude": 52.2891,
+    "zoom": 12,
+    "radius": 3,
+    "has_districts": false,
     "region-id": 1,
     "region-normalized_name": "wielkopolskie"
   },
@@ -5447,18 +5447,6 @@
     "region-id": 11,
     "region-normalized_name": "zachodniopomorskie"
   },
-  "czaplinek_113231": {
-    "id": 113231,
-    "name": "Czaplinek",
-    "county": "drawski",
-    "longitude": 16.23581,
-    "latitude": 53.55644,
-    "zoom": 12,
-    "radius": 2.25,
-    "has_districts": false,
-    "region-id": 11,
-    "region-normalized_name": "zachodniopomorskie"
-  },
   "darlowo": {
     "id": 25915,
     "name": "Dar\u0142owo",
@@ -5543,6 +5531,18 @@
     "region-id": 11,
     "region-normalized_name": "zachodniopomorskie"
   },
+  "karlino": {
+    "id": 86849,
+    "name": "Karlino",
+    "county": "bia\u0142ogardzki",
+    "longitude": 15.88066,
+    "latitude": 54.03893,
+    "zoom": 12,
+    "radius": 2.25,
+    "has_districts": false,
+    "region-id": 11,
+    "region-normalized_name": "zachodniopomorskie"
+  },
   "kolobrzeg": {
     "id": 8445,
     "name": "Ko\u0142obrzeg",
@@ -5585,6 +5585,18 @@
     "county": "policki",
     "longitude": 14.4659,
     "latitude": 53.42912,
+    "zoom": 12,
+    "radius": 2.25,
+    "has_districts": false,
+    "region-id": 11,
+    "region-normalized_name": "zachodniopomorskie"
+  },
+  "miedzyzdroje": {
+    "id": 50611,
+    "name": "Mi\u0119dzyzdroje",
+    "county": "kamie\u0144ski",
+    "longitude": 14.44954,
+    "latitude": 53.92912,
     "zoom": 12,
     "radius": 2.25,
     "has_districts": false,
@@ -5635,18 +5647,6 @@
     "latitude": 53.14945,
     "zoom": 12,
     "radius": 3,
-    "has_districts": false,
-    "region-id": 11,
-    "region-normalized_name": "zachodniopomorskie"
-  },
-  "sianow": {
-    "id": 106063,
-    "name": "Sian\u00f3w",
-    "county": "koszali\u0144ski",
-    "longitude": 16.29621,
-    "latitude": 54.22675,
-    "zoom": 12,
-    "radius": 2.25,
     "has_districts": false,
     "region-id": 11,
     "region-normalized_name": "zachodniopomorskie"

@@ -6,6 +6,7 @@ import urllib.request
 from itertools import chain
 from olx_monitor.constants import CITIES_URL, DATA_DIR
 from olx_monitor.server import build_url
+from olx_monitor.tg_poll import start_polling_app
 
 import logging
 logger = logging.getLogger(__name__)
@@ -58,3 +59,5 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'get_webhook':
         print(get_webhook())
 
+    elif sys.argv[1] == 'polling':
+        start_polling_app()

@@ -6,7 +6,7 @@ from typing import List
 from aiohttp import ClientSession, TCPConnector
 import os
 from telegram import Bot, InputMediaPhoto
-from telegram.error import BadRequest, RetryAfter, Unauthorized
+from telegram.error import BadRequest, RetryAfter, Forbidden
 
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
@@ -38,7 +38,8 @@ class Updater:
         data = await self._get_data(client, subsription)
 
         for record in data:
-            if not (await self.notify(subsription['chat_id'], record)):
+            successfully_notified = await self.notify(subsription['chat_id'], record)
+            if not successfully_notified:
                 if (await self.deactivate(subsription['chat_id'])):
                     return
 
@@ -127,7 +128,7 @@ class Updater:
                     f'Failed to send {len(media)} photos with error message [{e.message}]\n'
                     f'Photos:\n{all_photos_in_one}'
                 )
-            except Unauthorized:
+            except Forbidden:
                 return False
 
         return True
@@ -140,7 +141,7 @@ class Updater:
         logger.info('User %s will be deactivated.', chat_id)
         try:
             self.bot.send_message(chat_id, text='...')
-        except Unauthorized:
+        except Forbidden:
             logger.info('User %s has been successfully deactivated.', chat_id)
             return True
 
@@ -154,7 +155,7 @@ class Updater:
                     chat_id,
                     text='Будь ласка, натисніть /stop якщо ви більш не жадаєте отримувати оновлення.',
                 )
-            except Unauthorized:
+            except Forbidden:
                 pass
 
             return False
