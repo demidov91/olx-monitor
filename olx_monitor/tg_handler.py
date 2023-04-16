@@ -1,6 +1,7 @@
 import logging
 import os
 from traceback import print_exc
+import asyncio
 
 from telegram import Bot
 
@@ -15,7 +16,7 @@ class TgHandler(logging.Handler):
 
     def emit(self, record: logging.LogRecord) -> None:
         try:
-            self.bot.send_message(chat_id=os.environ['ADMIN_ID'], text=record.message)
+            asyncio.run(self.bot.send_message(chat_id=os.environ['ADMIN_ID'], text=record.message))
         except:
             print("Can't use TgHandler due to the following error.")
             print_exc()
