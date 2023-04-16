@@ -170,7 +170,7 @@ async def tg_retry_aware(func):
         await func()
     except RetryAfter as e:
         logger.info('Slow down %ss.', e.retry_after)
-        await asyncio.sleep(e.retry_after)
+        await asyncio.sleep(e.retry_after + 3)  # We don't hurry, can wait more.
         await func()
 
 
