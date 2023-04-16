@@ -167,11 +167,11 @@ class Updater:
 
 async def tg_retry_aware(func):
     try:
-        func()
+        await func()
     except RetryAfter as e:
         logger.info('Slow down %ss.', e.retry_after)
         await asyncio.sleep(e.retry_after)
-        func()
+        await func()
 
 
 async def get_relevant_news(client, api_url: str):
