@@ -82,6 +82,8 @@ class Updater:
         return text
 
     async def _get_data(self, client: ClientSession, subscription: dict) -> List[dict]:
+        # TODO: consider total amount here.
+
         response = await client.get(subscription['api_url'], timeout=30)
         all_records = (await response.json())['data']
         new_records = [x for x in all_records if x['id'] not in subscription['seen']]
