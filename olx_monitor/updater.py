@@ -226,10 +226,13 @@ if __name__ == '__main__':
     logging.getLogger('').addHandler(TgHandler())
 
     async def _run():
-        update_active_connection()
-        await Updater().update_news()
+        try:
+            update_active_connection()
+            await Updater().update_news()
+        except Exception as e:
+            logger.exception('Unexpected error: %s', e)
+        finally:
+            print('Wait 5 seconds to complete any tasks.')
+            await asyncio.sleep(5)
 
-    try:
-        asyncio.run(_run())
-    except Exception as e:
-        logger.exception('Unexpected error: %s', e)
+    asyncio.run(_run())

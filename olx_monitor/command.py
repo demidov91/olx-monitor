@@ -7,21 +7,22 @@ from itertools import chain
 from olx_monitor.constants import CITIES_URL, DATA_DIR
 from olx_monitor.server import build_url
 from olx_monitor.tg_poll import start_polling_app
+import asyncio
 
 import logging
 logger = logging.getLogger(__name__)
 
 
-def set_webhook(url: str):
+async def set_webhook(url: str):
     bot = Bot(os.environ['TG_TOKEN'])
     url_to_set = build_url(url)
     print(url_to_set)
-    print(bot.set_webhook(url_to_set))
+    print(await bot.set_webhook(url_to_set))
 
 
-def get_webhook():
+async def get_webhook():
     bot = Bot(os.environ['TG_TOKEN'])
-    return bot.get_webhook_info()
+    return await bot.get_webhook_info()
 
 
 def build_region(region: dict):
@@ -51,13 +52,13 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
 
     if sys.argv[1] == 'set_webhook':
-        set_webhook(sys.argv[2])
+        asyncio.run(set_webhook(sys.argv[2]))
 
     elif sys.argv[1] == 'build_cities':
         build_cities()
 
     elif sys.argv[1] == 'get_webhook':
-        print(get_webhook())
+        print(asyncio.run(get_webhook()))
 
     elif sys.argv[1] == 'polling':
         start_polling_app()

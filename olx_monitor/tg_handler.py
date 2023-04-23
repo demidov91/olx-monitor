@@ -16,7 +16,7 @@ class TgHandler(logging.Handler):
 
     def emit(self, record: logging.LogRecord) -> None:
         try:
-            asyncio.run(self.bot.send_message(chat_id=os.environ['ADMIN_ID'], text=record.message))
+            asyncio.ensure_future(self.bot.send_message(chat_id=os.environ['ADMIN_ID'], text=record.message))
         except:
             print("Can't use TgHandler due to the following error.")
             print_exc()
