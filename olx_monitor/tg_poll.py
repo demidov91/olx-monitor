@@ -30,9 +30,9 @@ async def _help_poll_handle(update: Update, context: CallbackContext):
 
 async def _message_poll_handler(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
-    text = update.message.text
+    message = update.effective_message
 
-    message_text = await handle_browser_url(text, chat_id)
+    message_text = await handle_browser_url(message.text, chat_id)
     await context.bot.send_message(chat_id=chat_id, text=message_text)
 
 
