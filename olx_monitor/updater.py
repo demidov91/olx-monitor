@@ -125,7 +125,7 @@ class Updater:
             with media[0]._unfrozen():
                 media[0].caption = message
             try:
-                await tg_retry_aware(partial(self.bot.send_media_group, chat_id, media=media))
+                await tg_retry_aware(partial(self.bot.send_media_group, chat_id, media=media, read_timeout=20))
             except BadRequest as e:
                 all_photos_in_one = '\n'.join(photos)
                 logger.exception(
