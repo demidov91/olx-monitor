@@ -19,6 +19,7 @@ from olx_monitor.constants import (
 
 logger = logging.getLogger(__name__)
 
+WANNA_PATTERN = re.compile('wann\w', flags=re.IGNORECASE)
 
 class Updater:
     def __init__(self):
@@ -214,6 +215,9 @@ def build_basic_message(olx_record: dict):
         price_part = f'Cena: {params.get(PRICE_OLX_PARAM)}'
 
     living_space_parts = [params[x] for x in (SPACE_OLX_PARAM, ROOMS_OLX_PARAM) if params.get(x) if not None]
+    if WANNA_PATTERN.search(olx_record['description']) is not None:
+        living_space_parts.append('🛁')
+
     living_space_part = ', '.join(living_space_parts)
 
     location_parts = (olx_record['location'].get(x, {}).get('name') for x in ('city', 'district'))
