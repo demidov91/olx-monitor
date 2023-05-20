@@ -56,7 +56,7 @@ class Updater:
                         '$push': {
                             'seen': {
                                 '$each': [record['id']],
-                                '$slice': -200,
+                                '$slice': -2000,
                             },
                         },
                     },
