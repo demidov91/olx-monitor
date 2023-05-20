@@ -20,6 +20,8 @@ logger = logging.getLogger(__name__)
 
 PRICE_OLX_PARAM = 'price'
 RENT_OLX_PARAM = 'rent'
+SPACE_OLX_PARAM = 'm'
+ROOMS_OLX_PARAM = 'rooms'
 
 
 class Updater:
@@ -209,7 +211,16 @@ def build_basic_message(olx_record: dict):
     url = olx_record['url']
     promo_intro = "*Reklama\n" if is_promo else ""
     params = get_record_params(olx_record)
-    return f'{promo_intro}{title}\n\n{params.get(PRICE_OLX_PARAM)} + {params.get(RENT_OLX_PARAM)}\n\n{url}'
+
+    if params.get(RENT_OLX_PARAM) is not None:
+        price_part = f'{params.get(PRICE_OLX_PARAM)} + {params[RENT_OLX_PARAM]}'
+    else:
+        price_part = f'Cena: {params.get(PRICE_OLX_PARAM)}'
+
+    living_space_parts = [params[x] for x in (SPACE_OLX_PARAM, ROOMS_OLX_PARAM) if params.get(x) if not None]
+    living_space_part = ', '.join(living_space_parts)
+    
+    return f'{promo_intro}{title}\n\n{price_part}\n{living_space_part}\n{url}'
 
 
 def get_record_params(olx_record: dict) -> dict:
