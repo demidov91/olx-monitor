@@ -13,15 +13,11 @@ from telegram.error import BadRequest, RetryAfter, Forbidden
 from olx_monitor.decorators import async_retry
 from olx_monitor.tg_handler import TgHandler
 from olx_monitor.db import subscription_collection, update_active_connection
-from olx_monitor.constants import MAX_PHOTOS_TO_SEND
+from olx_monitor.constants import (
+    MAX_PHOTOS_TO_SEND, SPACE_OLX_PARAM, PRICE_OLX_PARAM, ROOMS_OLX_PARAM, RENT_OLX_PARAM, MAX_OFFERS_TO_KEEP_IN_DB,
+)
 
 logger = logging.getLogger(__name__)
-
-
-PRICE_OLX_PARAM = 'price'
-RENT_OLX_PARAM = 'rent'
-SPACE_OLX_PARAM = 'm'
-ROOMS_OLX_PARAM = 'rooms'
 
 
 class Updater:
@@ -58,7 +54,7 @@ class Updater:
                         '$push': {
                             'seen': {
                                 '$each': [record['id']],
-                                '$slice': -2000,
+                                '$slice': -MAX_OFFERS_TO_KEEP_IN_DB,
                             },
                         },
                     },
@@ -82,7 +78,7 @@ class Updater:
                 '$push': {
                     'seen': {
                         '$each': [x['id'] for x in data],
-                        '$slice': -200,
+                        '$slice': -MAX_OFFERS_TO_KEEP_IN_DB,
                     },
                 },
             },
@@ -219,8 +215,11 @@ def build_basic_message(olx_record: dict):
 
     living_space_parts = [params[x] for x in (SPACE_OLX_PARAM, ROOMS_OLX_PARAM) if params.get(x) if not None]
     living_space_part = ', '.join(living_space_parts)
-    
-    return f'{promo_intro}{title}\n\n{price_part}\n{living_space_part}\n{url}'
+
+    location_parts = (olx_record['location'].get(x, {}).get('name') for x in ('city', 'district'))
+    location_part = ', '.join(x for x in location_parts if x is not None)
+
+    return f'{promo_intro}{title}\n\n{price_part}\n{living_space_part}\n{location_part}\n\n{url}'
 
 
 def get_record_params(olx_record: dict) -> dict:

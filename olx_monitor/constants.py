@@ -17,3 +17,12 @@ HELP_MESSAGE = (
 
 # Actually, Telegram Bot API supports up to 10 photos in a media group but it sometimes fails to send them.
 MAX_PHOTOS_TO_SEND = 8
+
+# Keep in DB only last N offers.
+MAX_OFFERS_TO_KEEP_IN_DB = 2000
+
+# OLX site constatnts.
+PRICE_OLX_PARAM = 'price'
+RENT_OLX_PARAM = 'rent'
+SPACE_OLX_PARAM = 'm'
+ROOMS_OLX_PARAM = 'rooms'
